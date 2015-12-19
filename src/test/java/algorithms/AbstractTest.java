@@ -1,4 +1,4 @@
-package common;
+package algorithms;
 
 import org.junit.Before;
 

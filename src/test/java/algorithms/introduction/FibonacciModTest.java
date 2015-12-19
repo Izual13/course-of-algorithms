@@ -1,6 +1,6 @@
-package introduction;
+package algorithms.introduction;
 
-import common.AbstractTest;
+import algorithms.AbstractTest;
 import org.junit.Assert;
 import org.junit.Test;
 
