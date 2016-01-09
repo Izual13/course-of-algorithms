@@ -9,8 +9,7 @@ import java.util.Scanner;
 import static java.lang.Math.abs;
 
 /**
- * поиск простых чисел
- * генерация решета эратосфена
+ * бинарный поиск
  */
 public class BinarySearch {
 
