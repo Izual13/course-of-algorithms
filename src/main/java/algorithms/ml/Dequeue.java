@@ -12,13 +12,7 @@ public class Dequeue {
 
 
     public static void main(String[] args) {
-
-//        String s = "5 1 1 1 2 1 3 2 50 2 -1"; //yes
-//        String s = "5 1 44 3 50 2 44 2 50 2 -1"; //yes
-
-
-//        start(new ByteArrayInputStream(s.getBytes()), System.out);
-
+        start(System.in, System.out);
     }
 
     public static void start(InputStream is, PrintStream out) {

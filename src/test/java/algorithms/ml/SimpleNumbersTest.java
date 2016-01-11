@@ -4,7 +4,7 @@ import algorithms.AbstractTest;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SimpleNumbersTest extends AbstractTest{
+public class SimpleNumbersTest extends AbstractTest {
 
     private void test(String inStr, String outStr) throws Exception {
         byte[] input = inStr.getBytes();
