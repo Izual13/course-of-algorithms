@@ -1,11 +1,12 @@
 package algorithms.ml;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  * Жадина.
@@ -23,18 +24,9 @@ public class BinaryHeap {
 
 
     public static void main(String[] args) {
-        String s = "3 1 2 2 2"; //4
-        s = "12 1 4 8 9 10 40 45 50 60 70 80 100 100"; //13
-        s = "7 1 3 5 7 9 11 13 25"; //5
-        s = "10 1 1 1 1 1 1 1 1 1 10 11"; //4
-        s = "2 4 1 6"; //3
-        s = "7 1 1 1 1 1 1 1 3"; //3
-        s = "3 4 3 5 6"; //5
-        s = " 10 1 2 3 4 5 6 7 8 9 10 12"; //10
 
-//        5/128 64 32 32 32/192 -> 8
-//        10/6 6 6 6 6 6 6 8 8 8/15 -> 10
-        start(new BufferedInputStream(new ByteArrayInputStream(s.getBytes())), System.out);
+
+        start(System.in, System.out);
     }
 
     public static void start(InputStream is, PrintStream out) {
@@ -49,38 +41,43 @@ public class BinaryHeap {
         int i = 0;
         while (a.length > 0) {
             int sum = 0;
-            int subLength = 0;
-            while (a.length > subLength && sum + a[subLength] <= m) {
-                sum += a[subLength];
-                subLength++;
-            }
-            int countZero = 0;
-            for (int j = 0; j < subLength; j++) {
-                a[j] /= 2;
-                if (a[j] == 0) {
-                    countZero++;
-                    if (subLength <= a.length - countZero) {
-                        swap(a, j, a.length - countZero);
-                    }
-                }
+            ArrayList<Integer> list = new ArrayList<>();
+            while (a.length != 0 && sum + peekHeap(a) <= m) {
+                int maxElement = popHeap(a);
+                a = Arrays.copyOf(a, a.length - 1);
+                list.add(maxElement);
+                sum += maxElement;
             }
 
-            for (int j = subLength-1; j >= 0; j--) {
-                siftDown(a, j);
-            }
-//            buildHeap(a);
-
-            if (countZero != 0 && a.length - countZero >= 0) {
-                a = Arrays.copyOf(a, a.length - countZero);
+            List<Integer> integers = list.parallelStream().map((x) -> x / 2).filter((x) -> x != 0).collect(Collectors.toList());
+            if (integers.size() != 0) {
+                a = Arrays.copyOf(a, a.length + integers.size());
             }
 
-
+            for (int j = integers.size() - 1; j >= 0; j--) {
+                a[a.length - j - 1] = integers.get(j);
+                siftUp(a, a.length - j - 1);
+            }
             i++;
         }
 
-        System.out.println(i);
+        out.println(i);
 
     }
+
+
+    static int popHeap(int m[]) {
+        int value = m[0];
+        swap(m, 0, m.length - 1);
+        m[m.length - 1] = 0;
+        siftDown(m, 0);
+        return value;
+    }
+
+    static int peekHeap(int m[]) {
+        return m[0];
+    }
+
 
     static void fillArray(Scanner in, int[] m) {
         for (int i = 0; i < m.length; i++) {
@@ -107,9 +104,6 @@ public class BinaryHeap {
         if (largest != i) {
             swap(m, i, largest);
             siftDown(m, largest);
-        }
-        if (left < m.length && right < m.length && m[left] < m[right]) {
-            swap(m, left, right);
         }
     }
 
