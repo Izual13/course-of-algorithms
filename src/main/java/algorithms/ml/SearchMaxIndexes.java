@@ -5,8 +5,8 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 /**
- * поиск простых чисел
- * генерация решета эратосфена
+ * Даны два массива целых чисел одинаковой длины A[0..n−1] и B[0..n−1].
+ * Необходимо найти первую пару индексов i0 и j0, i0≤j0, такую что A[i0]+B[j0]=max{A[i]+B[j],где0≤i<n,0≤j<n,i≤j}.
  */
 public class SearchMaxIndexes {
 
