@@ -24,7 +24,7 @@ public class SimpleNumbers {
         int n = in.nextInt();
         List<Integer> numbers = generateSieve(n+1);
 
-        List<Integer> dividers = new ArrayList();
+        List<Integer> dividers = new ArrayList<>();
 
         int i = 0;
         while (n != 1) {

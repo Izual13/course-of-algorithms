@@ -21,7 +21,7 @@ public class StackForBrackets {
         out.println(check(s));
     }
 
-    static String check(String in) {
+    private static String check(String in) {
         Stack<Character> stack = new Stack<>();
         String prefix = "";
         for (char c : in.toCharArray()) {
@@ -54,7 +54,7 @@ public class StackForBrackets {
         return in + postfix;
     }
 
-    static char backCharacter(char c) {
+    private static char backCharacter(char c) {
         switch (c) {
             case '[':
                 return ']';

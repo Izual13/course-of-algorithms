@@ -66,7 +66,7 @@ public class BinaryHeap {
     }
 
 
-    static int popHeap(int m[]) {
+    private static int popHeap(int m[]) {
         int value = m[0];
         swap(m, 0, m.length - 1);
         m[m.length - 1] = 0;
@@ -74,18 +74,18 @@ public class BinaryHeap {
         return value;
     }
 
-    static int peekHeap(int m[]) {
+    private static int peekHeap(int m[]) {
         return m[0];
     }
 
 
-    static void fillArray(Scanner in, int[] m) {
+    private static void fillArray(Scanner in, int[] m) {
         for (int i = 0; i < m.length; i++) {
             m[i] = in.nextInt();
         }
     }
 
-    static void buildHeap(int m[]) {
+    private static void buildHeap(int m[]) {
         for (int i = m.length / 2 - 1; i >= 0; i--) {
             siftDown(m, i);
         }

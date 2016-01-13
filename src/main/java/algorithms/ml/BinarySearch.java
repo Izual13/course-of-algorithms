@@ -72,7 +72,7 @@ public class BinarySearch {
 
     }
 
-    static void fillArray(Scanner in, int[] m) {
+    private static void fillArray(Scanner in, int[] m) {
         for (int i = 0; i < m.length; i++) {
             m[i] = in.nextInt();
         }

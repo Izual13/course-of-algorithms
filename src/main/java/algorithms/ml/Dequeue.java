@@ -51,15 +51,15 @@ public class Dequeue {
                 }
             }
 
-            System.out.println("YES");
+            out.println("YES");
         } catch (RuntimeException e) {
-            System.out.println("NO");
+            out.println("NO");
         }
 
     }
 
 
-    enum Action {
+    private enum Action {
         NON, pushFront, popFront, pushBack, popBack
     }
 

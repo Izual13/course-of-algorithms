@@ -42,7 +42,7 @@ public class SearchMaxIndexes {
 
     }
 
-    static void fillArray(Scanner in, int[] m) {
+    private static void fillArray(Scanner in, int[] m) {
         for (int i = 0; i < m.length; i++) {
             m[i] = in.nextInt();
         }
