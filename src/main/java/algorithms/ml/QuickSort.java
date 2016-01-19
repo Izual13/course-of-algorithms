@@ -13,7 +13,6 @@ public class QuickSort {
 
     public static void main(String[] args) {
         start(System.in, System.out);
-
     }
 
 
@@ -27,18 +26,18 @@ public class QuickSort {
         }
 
         Integer[] integers = list.toArray(new Integer[list.size()]);
-        sort(integers);
+        sortWithLast(integers);
 
         for (int i = 9; i <= integers.length; i += 10) {
             out.print(integers[i] + " ");
         }
     }
 
-    static void sort(Integer[] integers) {
-        sort(integers, 0, integers.length - 1);
+    static void sortWithLast(Integer[] values) {
+        sortWithLast(values, 0, values.length - 1);
     }
 
-    static void sort(Integer[] values, int start, int end) {
+    static void sortWithLast(Integer[] values, int start, int end) {
         if (start + 1 > end) {
             return;
         }
@@ -62,10 +61,38 @@ public class QuickSort {
             values[i] = values[i - 1];
         }
         values[i] = pivot;
-        sort(values, start, j);
-        sort(values, j + 1, end);
+        sortWithLast(values, start, j);
+        sortWithLast(values, j + 1, end);
     }
 
+
+    private static void sortWithAvg(Integer[] values) {
+        sortWithAvg(values, 0, values.length - 1);
+    }
+
+    private static void sortWithAvg(Integer[] values, int start, int end) {
+        if (start >= end)
+            return;
+        int i = start, j = end;
+        int cur = i - (i - j) / 2;
+        while (i < j) {
+            while (i < cur && (values[i] <= values[cur])) {
+                i++;
+            }
+            while (j > cur && (values[cur] <= values[j])) {
+                j--;
+            }
+            if (i < j) {
+                swap(values, i, j);
+                if (i == cur)
+                    cur = j;
+                else if (j == cur)
+                    cur = i;
+            }
+        }
+        sortWithAvg(values, start, cur);
+        sortWithAvg(values, cur + 1, end);
+    }
 
     static void swap(Integer[] values, int i, int j) {
         int tmp = values[i];
