@@ -52,9 +52,15 @@ public class QuickSort {
                 j--;
             }
 
-            if (i <= j) {
+            if (i < j) {
                 swap(values, i, j);
                 i++;
+            } else if (i == j) {
+                if (values[i] <= pivot) {
+                    i++;
+                } else {
+                    j--;
+                }
             }
         }
         for (i = end; i - 1 > j; i--) {

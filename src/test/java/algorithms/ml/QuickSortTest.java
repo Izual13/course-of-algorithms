@@ -21,4 +21,8 @@ public class QuickSortTest {
     public void test1() throws Exception {
         test("3 0 2 1 5 4 21 4 6 5 3 0 2 1 5 4 21 4 6 5", "4 21");
     }
+    @Test
+    public void test2() throws Exception {
+        test("3 6 5 7 2 9 8 10 4 1", "10");
+    }
 }
