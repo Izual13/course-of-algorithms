@@ -18,12 +18,12 @@ public class OrderStatistic {
         Scanner in = new Scanner(is);
 
         int n = in.nextInt();
+        int k = in.nextInt();
         int[] integers = new int[n];
         for (int i = 0; i < n; i++) {
             integers[i] = in.nextInt();
         }
 
-        int k = in.nextInt() - 1;
 
         out.println(getOrderStatistic(integers, k));
 
@@ -48,9 +48,15 @@ public class OrderStatistic {
             while (j > start && m[j] >= pivot) {
                 j--;
             }
-            if (i <= j) {
+            if (i < j) {
                 swap(m, i, j);
                 i++;
+            } else if (i == j) {
+                if (m[i] <= pivot) {
+                    i++;
+                } else {
+                    j--;
+                }
             }
         }
         for (i = end; i - 1 > j; i--) {
