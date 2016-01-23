@@ -35,12 +35,12 @@ public class RadixSort {
 
 
     static void sort(long[] a) {
-        int BITS = 64;
-        int W = BITS / BITS_PER_BYTE;
-        int R = 1 << BITS_PER_BYTE;
-        int MASK = R - 1;
+        final int BITS = 64;
+        final int W = BITS / BITS_PER_BYTE;
+        final int R = 1 << BITS_PER_BYTE;
+        final int MASK = R - 1;
+        final int N = a.length;
 
-        int N = a.length;
         long[] aux = new long[N];
 
         for (int d = 0; d < W; d++) {
