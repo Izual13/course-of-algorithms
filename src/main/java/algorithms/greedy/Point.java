@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * покрыть отрезки точками
  */
-public class Points {
+public class Point {
     public static void main(String[] args) {
         String s = "4\n" +
                 "4 7\n" +
