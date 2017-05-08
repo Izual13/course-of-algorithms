@@ -25,7 +25,6 @@ public class ProcessingNetworkPackages {
         Scanner scanner = new Scanner(is);
         maxBufferSize = scanner.nextInt();
 
-
         int n = scanner.nextInt();
         if (n == 0) {
             return string.toString();
