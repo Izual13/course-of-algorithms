@@ -4,6 +4,7 @@ package algorithms.cs;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class WindowMax {
@@ -32,7 +33,7 @@ public class WindowMax {
             if (!objects.isEmpty()) {
                 Record first = objects.pop();
                 int last = mas[i];
-                if (i != n - 1 && (objects.isEmpty() || objects.getFirst().max == null || last >= objects.getFirst().max /*|| !Objects.equals(first.max, objects.getFirst().max)*/)) {
+                if (i != n - 1 && (objects.isEmpty() || objects.getFirst().max == null || last >= objects.getFirst().max || !Objects.equals(first.max, objects.getFirst().max))) {
                     //rebuid
                     objects.addLast(new Record(last, last));
                     rebuid(objects);
