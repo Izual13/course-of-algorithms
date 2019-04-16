@@ -5,21 +5,36 @@ import java.util.Map;
 
 public class Pairs {
 
+    
     public static void main(String[] args) {
-        long[] a1 = {3, 4, 3, 100, 42};
-        long[] a2 = {4, 3, 6, 42, 3};
+        long[] a1 = { 3, 4, 3, 100, 42 };
+        long[] a2 = { 4, 3, 6, 42, 3 };
+        int top = 0;
         Map<Long, Struct> map = new HashMap<>();
 
 
         for (int i = 0; i < a1.length; i++) {
-            map.computeIfAbsent(a1[i], (ignore) -> new Struct()).incF1();
-            map.computeIfAbsent(a2[i], (ignore) -> new Struct()).incF2();
-            System.out.println("top " + (i + 1) + ": " + map.values().stream().mapToInt(Struct::calc).sum());
-        }
+            Struct struct1 = map.computeIfAbsent(a1[i], (ignore) -> new Struct());
 
+            Struct struct2 = map.computeIfAbsent(a2[i], (ignore) -> new Struct());
+
+            if (struct1 == struct2) {
+                top++;
+            } else {
+                if (struct1.incF1()) {
+                    top++;
+                }
+                if (struct2.incF2()) {
+                    top++;
+                }
+            }
+
+            System.out.println("top " + (i + 1) + ": " + top);
+        }
     }
 
     private static class Struct {
+
         private int f1 = 0;
         private int f2 = 0;
 
@@ -27,12 +42,16 @@ public class Pairs {
             return Math.min(f1, f2);
         }
 
-        private void incF1() {
+        private boolean incF1() {
+            int tmp = calc();
             f1++;
+            return tmp != calc();
         }
 
-        private void incF2() {
+        private boolean incF2() {
+            int tmp = calc();
             f2++;
+            return tmp != calc();
         }
     }
 }
