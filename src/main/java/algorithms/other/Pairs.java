@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class Pairs {
 
-    
     public static void main(String[] args) {
         long[] a1 = { 3, 4, 3, 100, 42 };
         long[] a2 = { 4, 3, 6, 42, 3 };
@@ -34,24 +33,23 @@ public class Pairs {
     }
 
     private static class Struct {
-
         private int f1 = 0;
         private int f2 = 0;
+        private int lastCalcValue = 0;
 
         private int calc() {
-            return Math.min(f1, f2);
+            lastCalcValue = Math.min(f1, f2);
+            return lastCalcValue;
         }
 
         private boolean incF1() {
-            int tmp = calc();
             f1++;
-            return tmp != calc();
+            return lastCalcValue != calc();
         }
 
         private boolean incF2() {
-            int tmp = calc();
             f2++;
-            return tmp != calc();
+            return lastCalcValue != calc();
         }
     }
 }
