@@ -8,16 +8,15 @@ public class Pairs {
     public static void main(String[] args) {
         long[] a1 = {3, 4, 3, 100, 42};
         long[] a2 = {4, 3, 6, 42, 3};
-        int t = 3;
         Map<Long, Struct> map = new HashMap<>();
 
 
-        for (int i = 0; i < t; i++) {
+        for (int i = 0; i < a1.length; i++) {
             map.computeIfAbsent(a1[i], (ignore) -> new Struct()).incF1();
             map.computeIfAbsent(a2[i], (ignore) -> new Struct()).incF2();
+            System.out.println("top " + (i + 1) + ": " + map.values().stream().mapToInt(Struct::calc).sum());
         }
 
-        System.out.println(map.values().stream().mapToInt(Struct::calc).sum());
     }
 
     private static class Struct {
