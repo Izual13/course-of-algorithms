@@ -17,7 +17,8 @@ public class Backpack {
             double b = s.nextDouble();
             ranges.add(new Bag(a, b));
         }
-        Collections.sort(ranges);
+
+        ranges.sort(Bag::compareTo);
 
         double cost = 0;
         for (Bag bag : ranges) {
@@ -40,7 +41,7 @@ public class Backpack {
     static class Bag implements Comparable {
         double cost, amount;
 
-        public Bag(double a, double amount) {
+        Bag(double a, double amount) {
             this.cost = a;
             this.amount = amount;
         }
